@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Interview-questions-Day4</h1>
+    <h3>Q1. How many operators do we have in JS ?</h3>
+    <p>Java script has four types of operators those are :</p>
+    <ol>
+        <li>Arithematic operators</li>
+        <li>Comparison operators</li>
+        <li>Assignment operators</li>
+        <li>Logical operators</li>
+    </ol>
+    <hr>
+    <h3>Q2. What are pure functions?</h3>
+    <p>It is a function that would give some or consistent output if some input is being passed. It is othing but a well defined function.</p>
+    <pre>
+        function add(a,b) {
+            console.log(a+b);
+        }
+        add(6,4);
+        add(10,10);
+    </pre>
+    <hr>
+    <h3>Q3. What is callback hell?</h3>
+    <p>It is a function that will be executed after the execution of its parent function. It also forms pyramid like structure that is difficult to understand and debug. We should avoid using callback hell as much as possible.</p>
+    <pre>
+        function print(){
+            setTimeout(() => {
+                console.log(5)
+                setTimeout(() => {
+                    console.log(4)
+                    setTimeout(() => {
+                        console.log(3)
+                        setTimeout(() => {
+                            console.log(2)
+                            setTimeout(() => {
+                                console.log(1)
+                            }, 1000);
+                        }, 2000);
+                    }, 3000);
+                }, 4000);
+            }, 5000);
+        }
+        print()
+    </pre>
+    <hr>
+    <h3>Q4. What are promises and why do we need them?</h3>
+    <p>Promises is like heaven for callback hell. It is introduced in ES6 version to handle asynchronous operations in an efficient way. to debug and manage code we need promises.</p> <br>
+    Promise allows us to write cleaner code and allows error to pass down the chain and can be handled 
+    <pre>
+        const printNumber = (time, value) =>{
+            return new Promise((resolved, rejected) => {
+                setTimeout(() => {
+                    console.log(value)
+                    resolved();
+                }, time);
+            })
+        }
+        printNumber(5000, 5)
+            .then(() => printNumber(4000, 4))
+            .then(() => printNumber(3000, 3))
+            .then(() => printNumber(2000, 2))
+            .then(() => printNumber(1000, 1))
+    </pre>
+    <hr>
+    <h3>Q5. What is promise chaining?</h3>
+    <p>Multiple use of `.then` method will leads to promise chaining.</p>
+    <hr>
+    <h3>Q6. What is the purpose of async/await keywords? Give an example of async/await.</h3>
+    <p>Async/Await is the extension of promises which we get as a support in JS. The async and await keywords enable asynchronous, promise-based behavior to be written in a cleaner style, avoiding the need to explicitly configure promise chains.</p>
+    <pre>
+        let example = async() => {
+            let x = await "prepbytes";
+            console.log(x);
+        }
+        console.log("This");
+        example();
+        console.log("academy");
+    </pre>
+
+</body>
+</html>
